@@ -1,0 +1,3 @@
+== chevre
+
+Chevre is virtualization/hypervisor support for Chef.  Chef + Virtualization -> Chevre.  I slay me.
