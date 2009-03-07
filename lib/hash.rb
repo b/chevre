@@ -16,15 +16,13 @@
 # limitations under the License.
 #
 
-require 'libvirt'
-
-$:.unshift File.dirname(__FILE__)
-require 'hash'
-require 'ser_des'
-require 'chevre/capabilities'
-require 'chevre/domain'
-require 'chevre/hypervisor'
-
-module Chevre
-  VERSION = '0.0.1'
+class Hash
+  
+  def deep_merge(second)
+    # From: http://www.ruby-forum.com/topic/142809
+    # Author: Stefan Rusterholz
+    merger = proc { |key,v1,v2| Hash === v1 && Hash === v2 ? v1.merge(v2, &merger) : v2 }
+    self.merge(second, &merger)
+  end
+     
 end

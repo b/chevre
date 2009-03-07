@@ -16,15 +16,16 @@
 # limitations under the License.
 #
 
-require 'libvirt'
-
-$:.unshift File.dirname(__FILE__)
-require 'hash'
-require 'ser_des'
-require 'chevre/capabilities'
-require 'chevre/domain'
-require 'chevre/hypervisor'
-
 module Chevre
-  VERSION = '0.0.1'
+  class Domain
+    
+    def create()
+      
+    end
+    
+    def create!()
+      
+    end
+    
+  end
 end

@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 #
 # Author:: Benjamin Black (<bb@opscode.com>)
 # Copyright:: Copyright (c) 2009 Opscode, Inc.
@@ -16,15 +17,13 @@
 # limitations under the License.
 #
 
-require 'libvirt'
+$: << File.join(File.dirname(__FILE__), "..", "lib")
 
-$:.unshift File.dirname(__FILE__)
-require 'hash'
-require 'ser_des'
-require 'chevre/capabilities'
-require 'chevre/domain'
-require 'chevre/hypervisor'
+require 'rubygems'
+require 'json'
+require 'chevre'
 
-module Chevre
-  VERSION = '0.0.1'
-end
+Chevre::Hypervisor.open("qemu:///system", {"read_only" => true})
+puts JSON.pretty_generate(Chevre::Hypervisor.capabilities.desc)
+puts JSON.pretty_generate(Chevre::Hypervisor.capabilities.default)
+Chevre::Hypervisor.close
